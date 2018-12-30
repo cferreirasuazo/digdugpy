@@ -1,7 +1,7 @@
 import sys
 import pygame
 
-
+"""Game Modules"""
 
 def event_listener():
     for event in pygame.event.get():

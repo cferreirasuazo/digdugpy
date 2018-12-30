@@ -13,7 +13,7 @@ def start_game():
     pygame.display.set_caption("Miner by Cristhianxy")
     red_surf = pygame.Surface((240,240))
    
-
+    """MAIN LOOP"""    
     while True:
         gf.event_listener()
         gf.update_screen(settings,screen)
