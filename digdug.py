@@ -15,7 +15,8 @@ def start_game():
 
     """MAIN LOOP"""    
     while True:
-        gf.event_listener()
+        gf.event_listener(settings,player)
+        player.update()
         gf.update_screen(settings,screen,player)
 
 
