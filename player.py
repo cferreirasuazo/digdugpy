@@ -1,5 +1,6 @@
 import pygame
 from pygame.sprite import Sprite
+from pygame.gfxdraw import circle
 
 class Player(Sprite):
     def __init__(self,settings,screen):
@@ -13,17 +14,19 @@ class Player(Sprite):
         self.rect = self.surface.get_rect()
         self.rect.x ,self.rect.y = 100,100
         self.x ,self.y = self.rect.x, self.rect.y
-
+        pygame.gfxdraw.filled_circle(self.surface,15,150,1000,(255,160,122))
         self.move_right = False
         self.move_left = False
         self.move_up = False
         self.move_down = False
 
 
+            
+
     def update(self):
         if self.move_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.player_speed_factor
-
+            
         if self.move_left and self.rect.left > 0 :
             self.x -= self.settings.player_speed_factor
         
