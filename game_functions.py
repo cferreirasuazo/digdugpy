@@ -4,6 +4,8 @@ from bullet import Bullet
 """Game Modules"""
 
 def listen_press_down(event,screen,settings,player,bullets):
+     
+
         if event.key  == pygame.K_RIGHT:
             player.move_right = True
 
@@ -18,9 +20,12 @@ def listen_press_down(event,screen,settings,player,bullets):
 
         if event.key == pygame.K_SPACE:
             shoot(settings,screen,player,bullets)
+            print(player.direction)
 
+        
 
 def listen_press_up(event,player):
+        
         if event.key  == pygame.K_RIGHT:
             player.move_right = False
         if event.key  == pygame.K_LEFT:
@@ -40,17 +45,33 @@ def event_listener(screen,settings,player,bullets):
             listen_press_down(event,screen,settings,player,bullets)
 
 def update_bullets(settings,screen,bullets):
-    print("UPDATING BULLET")
+ 
+
+    bullets.update()
     screen_rect = screen.get_rect()
     for bullet in bullets.copy():
-        if bullet.rect.bottom <=0 or bullet.rect.top >= screen_rect.top or bullet.rect.right < screen_rect.right or bullet.rect.left > 0:
-            bullets.remove(bullet)
+        if bullet.shoot_top:
+            if bullet.rect.bottom <= 0 :
+                print("bullet Removed")
+                bullets.remove(bullet)
+
+        if bullet.shoot_bottom:
+            if bullet.rect.top >= screen_rect.bottom :
+                print("bullet Removed")
+                bullets.remove(bullet)
+        
+       
+
 
 def shoot(settings,screen,player,bullets):
     bullet = Bullet(settings,screen,player)
     bullets.add(bullet)
 
-def update_screen(settings,screen,player):
+def update_screen(settings,screen,player,bullets):
     screen.fill(settings.bg_color)
+
+    for bullet in bullets.sprites():
+        if bullet.shoot_top or bullet.shoot_bottom or  bullet.shoot_right or bullet.shoot_left:
+            bullet.draw()
     player.__blit__()
     pygame.display.flip()

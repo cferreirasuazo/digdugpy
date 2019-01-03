@@ -19,7 +19,8 @@ def start_game():
     while True:
         gf.event_listener(screen,settings,player,bullets)
         player.update()
-        gf.update_screen(settings,screen,player)
+        gf.update_bullets(settings,screen,bullets)
+        gf.update_screen(settings,screen,player,bullets)
 
 
 start_game()
