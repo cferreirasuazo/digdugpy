@@ -43,6 +43,15 @@ class Bullet(Sprite):
             self.y += 5
             self.rect.y = self.y
         
+        if self.shoot_right:
+            self.x += 5
+            self.rect.y = self.x
+
+        if self.shoot_left:
+            self.x -= 5
+            self.rect.x = self.x
+
+        
         self.rect.x = self.x
         self.rect.y = self.y
 

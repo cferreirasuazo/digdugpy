@@ -5,7 +5,6 @@ from bullet import Bullet
 
 def listen_press_down(event,screen,settings,player,bullets):
      
-
         if event.key  == pygame.K_RIGHT:
             player.move_right = True
 
@@ -52,15 +51,17 @@ def update_bullets(settings,screen,bullets):
     for bullet in bullets.copy():
         if bullet.shoot_top:
             if bullet.rect.bottom <= 0 :
-                print("bullet Removed")
+                print("bullet Removed top")
                 bullets.remove(bullet)
 
         if bullet.shoot_bottom:
             if bullet.rect.top >= screen_rect.bottom :
-                print("bullet Removed")
+                print("bullet Removed bottom")
                 bullets.remove(bullet)
         
-       
+        if bullet.shoot_right:
+            if bullet.rect.right >= screen_rect.right:
+                bullets.remove(bullet)  
 
 
 def shoot(settings,screen,player,bullets):
