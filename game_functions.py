@@ -43,9 +43,17 @@ def event_listener(screen,settings,player,bullets):
         if event.type == pygame.KEYDOWN:
             listen_press_down(event,screen,settings,player,bullets)
 
+def create_sand(settings,screen):
+    grain_heigth, grain_width = 2,2
+    player_height = 50
+    screen_width = settings.screen_width
+    screen_height = settings.screen_height
+    total_grain_height = int((screen_height / grain_heigth) - (3 * player_height ))
+    total_grain_width = int(screen_width / grain_width)
+    
+
 def update_bullets(settings,screen,bullets):
  
-
     bullets.update()
     screen_rect = screen.get_rect()
     for bullet in bullets.copy():
@@ -70,7 +78,9 @@ def shoot(settings,screen,player,bullets):
 
 def update_screen(settings,screen,player,bullets):
     screen.fill(settings.bg_color)
-
+    surface = pygame.Surface((2,2))
+    surface.fill((220,20,60))
+    screen.blit(surface,(0,0))
     for bullet in bullets.sprites():
         if bullet.shoot_top or bullet.shoot_bottom or  bullet.shoot_right or bullet.shoot_left:
             bullet.draw()

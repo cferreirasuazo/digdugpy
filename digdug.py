@@ -14,9 +14,11 @@ def start_game():
     pygame.display.set_caption("Miner by Cristhianxy")
     player = Player(settings, screen)
     bullets = Group()
+    gf.create_sand(settings,screen)
 
     """MAIN LOOP"""    
     while True:
+        
         gf.event_listener(screen,settings,player,bullets)
         player.update()
         gf.update_bullets(settings,screen,bullets)
