@@ -36,19 +36,19 @@ class Bullet(Sprite):
 
     def update(self):
         if self.shoot_top:    
-            self.y -= 5
+            self.y -= 10
             self.rect.y = self.y
 
         if self.shoot_bottom:
-            self.y += 5
+            self.y += 30
             self.rect.y = self.y
         
         if self.shoot_right:
-            self.x += 5
+            self.x += 10
             self.rect.y = self.x
 
         if self.shoot_left:
-            self.x -= 5
+            self.x -= 10
             self.rect.x = self.x
 
         

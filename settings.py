@@ -11,7 +11,7 @@ class Settings():
         self.screen_width = winObject.current_w - int(winObject.current_w * 0.10 )
 
         #Player Settings
-        self.player_speed_factor = 3.2
+        self.player_speed_factor = 7.102
 
         #Bullet settings
         self.bullet_color = (0, 84, 9)

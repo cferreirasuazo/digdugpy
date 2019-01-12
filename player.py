@@ -9,11 +9,11 @@ class Player(Sprite):
         self.screen = screen 
         self.screen_rect = self.screen.get_rect()
         self.player_color = (3, 32, 79)
-        self.surface = pygame.Surface((50,50))
+        self.surface = pygame.Surface((100,100))
         self.surface.fill(self.player_color)
         self.rect = self.surface.get_rect()
         self.rect.x ,self.rect.y = 100,100
-        self.x ,self.y = self.rect.x, self.rect.y
+        self.x ,self.y = float(self.rect.x), float(self.rect.y)
         self.move_right = False
         self.move_left = False
         self.move_up = False
@@ -36,8 +36,8 @@ class Player(Sprite):
             self.direction = "top"
         if self.move_down and self.rect.bottom < self.screen_rect.bottom:
             self.y += self.settings.player_speed_factor
-            
             self.direction = "bottom"
+
         self.rect.x = self.x
         self.rect.y = self.y
 
