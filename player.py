@@ -9,7 +9,7 @@ class Player(Sprite):
         self.screen = screen 
         self.screen_rect = self.screen.get_rect()
         self.player_color = (3, 32, 79)
-        self.surface = pygame.Surface((100,100))
+        self.surface = pygame.Surface((self.settings.player_width,self.settings.player_height))
         self.surface.fill(self.player_color)
         self.rect = self.surface.get_rect()
         self.rect.x ,self.rect.y = 100,100
