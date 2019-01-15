@@ -23,7 +23,7 @@ def start_game():
         gf.event_listener(screen,settings,player,bullets)
         player.update()
         gf.update_bullets(settings,screen,bullets)
-        gf.update_screen(settings,screen,player,bullets)
+        gf.update_screen(settings,screen,player,bullets,ground_grid)
 
 
 start_game()

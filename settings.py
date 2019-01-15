@@ -13,7 +13,7 @@ class Settings():
         self.screen_width = winObject.current_w - int(winObject.current_w * 0.10 )
 
         #Player Settings
-        self.player_speed_factor = 2.102
+        self.player_speed_factor = 2.5
         self.player_height = 50
         self.player_width = 50
  
@@ -22,4 +22,5 @@ class Settings():
         self.bullet_speed = 25
 
         #Grid Ground settings
-        self.cell_measure = 54
+        self.cell_measure = 15
+        self.cell_color = (255,0,0)
