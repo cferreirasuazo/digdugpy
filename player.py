@@ -13,7 +13,7 @@ class Player(Sprite):
         self.surface.fill(self.player_color)
         self.rect = self.surface.get_rect()
         self.rect.x ,self.rect.y = 100,100
-        self.x ,self.y = float(self.rect.x), float(self.rect.y)
+        self.x ,self.y = (self.rect.x), (self.rect.y)
         self.move_right = False
         self.move_left = False
         self.move_up = False

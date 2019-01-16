@@ -45,10 +45,10 @@ def event_listener(screen,settings,player,bullets):
 
 def create_ground(settings,screen,player,ground_grid):
     grain_heigth, grain_width = settings.cell_measure,settings.cell_measure
-    player_height = settings.screen_height
+    player_height = settings.player_height
     screen_width = settings.screen_width
     screen_height = settings.screen_height
-    total_grain_height = int((screen_height / settings.cell_measure ) - (2 * player_height ))
+    total_grain_height = int((screen_height /  ) - (2 * player_height ))
     total_grain_width = int(screen_width / grain_width)
     print(total_grain_width,total_grain_height)
 
@@ -56,9 +56,13 @@ def create_ground(settings,screen,player,ground_grid):
         for y in range(0,50):
             cell = Ground_cell(x * 20,y * 20,settings,screen)
             ground_grid.add(cell)
-            
 
-    
+
+def check_ground_collition(ground_grid,player):
+    collited = pygame.sprite.spritecollideany(player,ground_grid)     
+    if collited:
+        ground_grid.remove(collited)
+
 def update_bullets(settings,screen,bullets):
  
     bullets.update()
@@ -84,7 +88,7 @@ def shoot(settings,screen,player,bullets):
 
 def update_screen(settings,screen,player,bullets,ground_grid):
     screen.fill(settings.bg_color)
-
+    check_ground_collition(ground_grid,player)
     for bullet in bullets.sprites():
         if bullet.shoot_top or bullet.shoot_bottom or  bullet.shoot_right or bullet.shoot_left:
             bullet.draw()

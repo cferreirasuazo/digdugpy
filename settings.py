@@ -13,7 +13,7 @@ class Settings():
         self.screen_width = winObject.current_w - int(winObject.current_w * 0.10 )
 
         #Player Settings
-        self.player_speed_factor = 2.5
+        self.player_speed_factor = 3
         self.player_height = 50
         self.player_width = 50
  
