@@ -55,6 +55,8 @@ def create_ground(settings,screen,player,ground_grid):
     for x in range(0,50):
         for y in range(0,50):
             cell = Ground_cell(x * 20,y * 20,settings,screen)
+
+            
             ground_grid.add(cell)
 
 
@@ -86,15 +88,19 @@ def shoot(settings,screen,player,bullets):
     bullet = Bullet(settings,screen,player)
     bullets.add(bullet)
 
-def update_screen(settings,screen,player,bullets,ground_grid):
+def update_screen(settings,screen,player,bullets,ground_grid,monsters):
     screen.fill(settings.bg_color)
     check_ground_collition(ground_grid,player)
     for bullet in bullets.sprites():
         if bullet.shoot_top or bullet.shoot_bottom or  bullet.shoot_right or bullet.shoot_left:
             bullet.draw()
 
-    for ground_cell in ground_grid.sprites():
-        ground_cell.draw()
+    # for ground_cell in ground_grid.sprites():
+    #     ground_cell.draw()
         
     player.__blit__()
+    
+    for monster in monsters.sprites():
+        monster.__blit__()
+    
     pygame.display.flip()

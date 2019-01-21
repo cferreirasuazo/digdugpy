@@ -24,3 +24,9 @@ class Settings():
         #Grid Ground settings
         self.cell_measure = 15
         self.cell_color = (255,0,0)
+
+        #Monster Prototype
+
+        self.monster_color = (214, 23, 166)
+
+
