@@ -28,8 +28,8 @@ def start_game():
         
         gf.event_listener(screen,settings,player,bullets)
         player.update()
-        brian.move_y()
-        brian2.move_x()
+        #brian.move_y()
+        #brian2.move_x()
         gf.update_bullets(settings,screen,bullets)
         gf.update_screen(settings,screen,player,bullets,ground_grid,monsters)
 

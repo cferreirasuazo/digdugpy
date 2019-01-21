@@ -50,10 +50,11 @@ def create_ground(settings,screen,player,ground_grid):
     screen_height = settings.screen_height
     #total_grain_height = int((screen_height /  ) - (2 * player_height ))
     #total_grain_width = int(screen_width / grain_width)
-   # print(total_grain_width,total_grain_height)
+    print(screen_width,screen_height)
 
-    for x in range(0,50):
-        for y in range(0,50):
+
+    for x in range(15,45):
+        for y in range(15,35):
             cell = Ground_cell(x * 20,y * 20,settings,screen)
 
             
@@ -96,11 +97,11 @@ def update_screen(settings,screen,player,bullets,ground_grid,monsters):
             bullet.draw()
 
     # for ground_cell in ground_grid.sprites():
-    #     ground_cell.draw()
+    #      ground_cell.draw()
         
     player.__blit__()
     
-    for monster in monsters.sprites():
-        monster.__blit__()
+    # for monster in monsters.sprites():
+    #     monster.__blit__()
     
     pygame.display.flip()

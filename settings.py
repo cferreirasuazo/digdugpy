@@ -13,16 +13,17 @@ class Settings():
         self.screen_width = winObject.current_w - int(winObject.current_w * 0.10 )
 
         #Player Settings
-        self.player_speed_factor = 3
-        self.player_height = 50
-        self.player_width = 50
+        self.player_measure = 30
+        self.player_speed_factor = 8
+        self.player_height = self.player_measure
+        self.player_width = self.player_measure
  
         #Bullet settings
         self.bullet_color = (0, 84, 9)
         self.bullet_speed = 25
 
         #Grid Ground settings
-        self.cell_measure = 15
+        self.cell_measure = 20
         self.cell_color = (255,0,0)
 
         #Monster Prototype
