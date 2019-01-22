@@ -12,7 +12,7 @@ class Player(Sprite):
         self.surface = pygame.Surface((self.settings.player_width,self.settings.player_height))
         self.surface.fill(self.player_color)
         self.rect = self.surface.get_rect()
-        self.rect.x ,self.rect.y = 100,100
+        self.rect.x ,self.rect.y = 600,600
         self.x ,self.y = (self.rect.x), (self.rect.y)
         self.move_right = False
         self.move_left = False
@@ -22,15 +22,15 @@ class Player(Sprite):
         self.direction = "bottom"
 
     def update(self):
-        if self.move_right and self.rect.right < self.screen_rect.right:
+        if self.move_right and self.rect.right < 900: #self.screen_rect.right
             self.x += self.settings.player_speed_factor
 
             self.direction = "right"
-        if self.move_left and self.rect.left > 0 :
+        if self.move_left and self.rect.left > 300 :
             self.x -= self.settings.player_speed_factor
             
             self.direction = "left"
-        if self.move_up and self.rect.top > 0 :
+        if self.move_up and self.rect.top > 200 :
             self.y -= self.settings.player_speed_factor
             
             self.direction = "top"

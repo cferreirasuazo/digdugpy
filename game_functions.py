@@ -48,17 +48,13 @@ def create_ground(settings,screen,player,ground_grid):
     player_height = settings.player_height
     screen_width = settings.screen_width
     screen_height = settings.screen_height
-    #total_grain_height = int((screen_height /  ) - (2 * player_height ))
-    #total_grain_width = int(screen_width / grain_width)
-    print(screen_width,screen_height)
-
-
     for x in range(15,45):
+        x = x * 20
         for y in range(15,35):
-            cell = Ground_cell(x * 20,y * 20,settings,screen)
-
-            
+            y = y * 20
+            cell = Ground_cell(x,y,settings,screen)
             ground_grid.add(cell)
+            print(x,y)
 
 
 def check_ground_collition(ground_grid,player):
@@ -96,8 +92,8 @@ def update_screen(settings,screen,player,bullets,ground_grid,monsters):
         if bullet.shoot_top or bullet.shoot_bottom or  bullet.shoot_right or bullet.shoot_left:
             bullet.draw()
 
-    # for ground_cell in ground_grid.sprites():
-    #      ground_cell.draw()
+    for ground_cell in ground_grid.sprites():
+         ground_cell.draw()
         
     player.__blit__()
     
