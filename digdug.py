@@ -6,7 +6,7 @@ import game_functions as gf
 from player import Player
 from pygame.sprite import Group
 from monster import Monster
-
+from item import Item
 
 def start_game():
     pygame.init()
@@ -22,7 +22,7 @@ def start_game():
 
     monsters = Group()
     monsters.add(brian,brian2)
-
+    
     """MAIN LOOP"""    
     while True:
         

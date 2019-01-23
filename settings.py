@@ -23,7 +23,7 @@ class Settings():
         self.bullet_speed = 25
 
         #Grid Ground settings
-        self.cell_measure = 19
+        self.cell_measure = 19.5
         self.cell_color = (255,0,0)
 
         #Monster Prototype

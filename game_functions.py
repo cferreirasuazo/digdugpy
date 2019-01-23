@@ -54,12 +54,14 @@ def create_ground(settings,screen,player,ground_grid):
             y = y * 20
             cell = Ground_cell(x,y,settings,screen)
             ground_grid.add(cell)
-            print(x,y)
+          
 
 
 def check_ground_collition(ground_grid,player):
     collited = pygame.sprite.spritecollideany(player,ground_grid)     
+    
     if collited:
+        print(collited)
         ground_grid.remove(collited)
 
 def update_bullets(settings,screen,bullets):
