@@ -16,12 +16,18 @@ def start_game():
     player = Player(settings, screen)
     bullets = Group()
     ground_grid = Group()
+    jewels = Group()
     gf.create_ground(settings,screen,player,ground_grid)
     brian = Monster(settings,screen,400,500)
     brian2 = Monster(settings,screen,500,400)
-
+    
     monsters = Group()
     monsters.add(brian,brian2)
+
+    gf.create_jewels(screen,settings,jewels)
+    print(jewels)
+
+
     
     """MAIN LOOP"""    
     while True:
@@ -31,7 +37,7 @@ def start_game():
         #brian.move_y()
         #brian2.move_x()
         gf.update_bullets(settings,screen,bullets)
-        gf.update_screen(settings,screen,player,bullets,ground_grid,monsters)
+        gf.update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels)
 
 
 start_game()

@@ -3,6 +3,7 @@ import pygame
 from bullet import Bullet
 import traceback
 from ground_cell import Ground_cell
+from item import Item
 """Game Modules"""
 
 def listen_press_down(event,screen,settings,player,bullets):
@@ -43,6 +44,25 @@ def event_listener(screen,settings,player,bullets):
         if event.type == pygame.KEYDOWN:
             listen_press_down(event,screen,settings,player,bullets)
 
+def create_jewels(screen,settings,jewels):
+        jewel_list = [
+            ["jewel_blue.png",5],
+            ["jewel_purple.png",10],
+            ["jewel_yellow.png",3]
+        ]
+
+        jewels.add(Item(screen,settings,380,440,jewel_list[0][0],jewel_list[0][1]))
+        jewels.add(Item(screen,settings,580,480,jewel_list[0][0],jewel_list[0][1]))
+        jewels.add(Item(screen,settings,360,480,jewel_list[1][0],jewel_list[1][1]))
+        jewels.add(Item(screen,settings,740,380,jewel_list[1][0],jewel_list[1][1]))
+        jewels.add(Item(screen,settings,580,540,jewel_list[2][0],jewel_list[2][1]))
+        jewels.add(Item(screen,settings,480,640,jewel_list[2][0],jewel_list[2][1]))
+                
+
+
+
+
+
 def create_ground(settings,screen,player,ground_grid):
     grain_heigth, grain_width = settings.cell_measure,settings.cell_measure
     player_height = settings.player_height
@@ -63,6 +83,7 @@ def check_ground_collition(ground_grid,player):
     if collited:
         print(collited)
         ground_grid.remove(collited)
+        print(collited.rect)
 
 def update_bullets(settings,screen,bullets):
  
@@ -87,9 +108,13 @@ def shoot(settings,screen,player,bullets):
     bullet = Bullet(settings,screen,player)
     bullets.add(bullet)
 
-def update_screen(settings,screen,player,bullets,ground_grid,monsters):
+def update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels):
     screen.fill(settings.bg_color)
     check_ground_collition(ground_grid,player)
+
+    for jewel in jewels.sprites():
+        jewel.__blit__()
+
     for bullet in bullets.sprites():
         if bullet.shoot_top or bullet.shoot_bottom or  bullet.shoot_right or bullet.shoot_left:
             bullet.draw()
