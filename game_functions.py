@@ -48,7 +48,7 @@ def event_listener(screen,settings,player,bullets):
 
 
 def remove_play_sound(jewels,jewel):
-    time.sleep(0.5)
+    time.sleep(0.1)
     jewels.remove(jewel)
     print("PLAY SOUND")
 
@@ -61,12 +61,6 @@ def jewels_point(player,jewels,ground_grid):
                if pygame.sprite.spritecollideany(player,jewels):
                   t = threading.Thread(target=remove_play_sound, args = (jewels,jewel))
                   t.start()
-               
-        # collided = pygame.sprite.spritecollideany(player,jewels)
-        
-        # if collided:
-        #     print("collied")
-        #     jewels.remove(collided)
 
 def create_jewels(screen,settings,jewels):
         jewel_list = [
