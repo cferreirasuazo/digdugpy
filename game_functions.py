@@ -46,15 +46,12 @@ def event_listener(screen,settings,player,bullets):
         if event.type == pygame.KEYDOWN:
             listen_press_down(event,screen,settings,player,bullets)
 
-
 def remove_play_sound(jewels,jewel):
     time.sleep(0.1)
     jewels.remove(jewel)
     print("PLAY SOUND")
 
 def jewels_point(player,jewels,ground_grid):
-
-        collided = pygame.sprite.groupcollide(jewels,ground_grid,False,False)
         
         for jewel in jewels.sprites():
            if not pygame.sprite.spritecollideany(jewel,ground_grid):
@@ -77,10 +74,6 @@ def create_jewels(screen,settings,jewels):
         jewels.add(Item(screen,settings,480,640,jewel_list[2][0],jewel_list[2][1]))
                 
 def create_ground(settings,screen,player,ground_grid):
-    grain_heigth, grain_width = settings.cell_measure,settings.cell_measure
-    player_height = settings.player_height
-    screen_width = settings.screen_width
-    screen_height = settings.screen_height
     for x in range(15,45):
         x = x * 20
         for y in range(15,35):
@@ -88,8 +81,6 @@ def create_ground(settings,screen,player,ground_grid):
             cell = Ground_cell(x,y,settings,screen)
             ground_grid.add(cell)
           
-
-
 def check_ground_collition(ground_grid,player):
     collited = pygame.sprite.spritecollideany(player,ground_grid)     
     
@@ -121,8 +112,6 @@ def update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels):
     screen.fill(settings.bg_color)
     check_ground_collition(ground_grid,player)
 
-   
-
     for jewel in jewels.sprites():
         jewel.__blit__()
 
@@ -136,8 +125,5 @@ def update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels):
          ground_cell.draw()
         
     player.__blit__()
-    
-    # for monster in monsters.sprites():
-    #     monster.__blit__()
     
     pygame.display.flip()

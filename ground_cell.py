@@ -11,11 +11,11 @@ class Ground_cell(Sprite):
         self.color = self.settings.cell_color
         self.screen_rect = self.screen.get_rect()
         self.image = pygame.image.load("assets/ground.jpg")
-        self.rect = self.image.get_rect() #pygame.Rect(0,0,self.settings.cell_measure,self.settings.cell_measure)
+        self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
 
     def draw(self):
-        #pygame.draw.rect(self.screen,self.color,self.rect)
+
         self.screen.blit(self.image,self.rect)
 
