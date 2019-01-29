@@ -4,7 +4,6 @@ import traceback
 
 class Ground_cell(Sprite):
     def __init__(self,x,y,settings,screen):
-        #traceback.print_stack()
         super(Ground_cell,self).__init__()
         self.screen = screen
         self.settings = settings

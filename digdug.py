@@ -7,6 +7,7 @@ from player import Player
 from pygame.sprite import Group
 from monster import Monster
 from item import Item
+from dashboard import Dashboard
 
 def start_game():
     pygame.init()
@@ -25,8 +26,7 @@ def start_game():
     monsters.add(brian,brian2)
 
     gf.create_jewels(screen,settings,jewels)
-    print(jewels)
-
+    dashboard = Dashboard(screen,settings)
 
     
     """MAIN LOOP"""    
@@ -37,7 +37,7 @@ def start_game():
         #brian.move_y()
         #brian2.move_x()
         gf.update_bullets(settings,screen,bullets)
-        gf.update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels)
+        gf.update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels,dashboard)
 
 
 start_game()

@@ -6,6 +6,7 @@ from ground_cell import Ground_cell
 from item import Item
 import time 
 import threading
+
 """Game Modules"""
 
 def listen_press_down(event,screen,settings,player,bullets):
@@ -108,10 +109,10 @@ def shoot(settings,screen,player,bullets):
     bullet = Bullet(settings,screen,player)
     bullets.add(bullet)
 
-def update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels):
+def update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels,dashboard):
     screen.fill(settings.bg_color)
     check_ground_collition(ground_grid,player)
-
+    dashboard.__blit__()
     for jewel in jewels.sprites():
         jewel.__blit__()
 
