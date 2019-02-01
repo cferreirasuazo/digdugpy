@@ -30,4 +30,6 @@ class Settings():
 
         self.monster_color = (214, 23, 166)
 
-
+        #Scoreboard 
+        self.board_bg_color = (0, 0, 0)
+        self.board_font_color = (244, 244, 244)
