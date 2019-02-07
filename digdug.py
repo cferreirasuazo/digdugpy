@@ -27,10 +27,11 @@ def start_game():
     monsters.add(brian,brian2)
 
     gf.create_jewels(screen,settings,jewels)
-    dashboard = Dashboard(screen,settings)
+    
 
     game_stats = GameStats(settings) 
     game_stats.reset_game()
+    dashboard = Dashboard(screen,settings,game_stats)
     
     """MAIN LOOP"""    
     while True:
@@ -41,7 +42,7 @@ def start_game():
         #brian2.move_x()
         gf.update_bullets(settings,screen,bullets)
         gf.update_items(jewels)
-        gf.update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels,dashboard,game_stats)
+        gf.update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels,dashboard,game_stats,dashboard)
 
 
 start_game()

@@ -47,23 +47,27 @@ def event_listener(screen,settings,player,bullets):
         if event.type == pygame.KEYDOWN:
             listen_press_down(event,screen,settings,player,bullets)
 
-def remove_play_sound(jewels,jewel,game_stats):
+def remove_jewel(jewels,jewel,game_stats,sb):
     time.sleep(0.1)
-    jewels.remove(jewel)
-    print(datetime.datetime.now())
+    if jewels.has(jewel):
+        jewels.remove(jewel)
+        game_stats.increase_score()
+        sb.prep_score()
+        
     
-
-def player_jewel_collide(player,jewels,ground_grid,game_stats):
+def player_jewel_collide(player,jewels,ground_grid,game_stats,sb):
         
         for jewel in jewels.sprites():
            if not pygame.sprite.spritecollideany(jewel,ground_grid):
                 collision =  pygame.sprite.spritecollideany(player,jewels)
+        
                 if collision:
 
-                    t = threading.Thread(target=remove_play_sound, args = (jewels,jewel,game_stats))
+                    t = threading.Thread(target=remove_jewel, args = (jewels,jewel,game_stats,sb))
                     t.start()
 
 def create_jewels(screen,settings,jewels):
+
         jewel_list = [
             ["jewel_blue.png",5],
             ["jewel_purple.png",10],
@@ -116,12 +120,12 @@ def update_items(items):
     for item in items.sprites():
         item.draw()
 
-def update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels,dashboard,game_stats):
+def update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels,dashboard,game_stats,sb):
     screen.fill(settings.bg_color)
     dashboard.__blit__()
 
     check_ground_collition(ground_grid,player)
-    player_jewel_collide(player,jewels,ground_grid,game_stats)
+    player_jewel_collide(player,jewels,ground_grid,game_stats,sb)
 
     for bullet in bullets.sprites():
         if bullet.shoot_top or bullet.shoot_bottom or  bullet.shoot_right or bullet.shoot_left:
