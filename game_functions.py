@@ -6,7 +6,7 @@ from ground_cell import Ground_cell
 from item import Item
 import time 
 import threading
-
+import datetime
 """Game Modules"""
 
 def listen_press_down(event,screen,settings,player,bullets):
@@ -47,18 +47,21 @@ def event_listener(screen,settings,player,bullets):
         if event.type == pygame.KEYDOWN:
             listen_press_down(event,screen,settings,player,bullets)
 
-def remove_play_sound(jewels,jewel):
+def remove_play_sound(jewels,jewel,game_stats):
     time.sleep(0.1)
     jewels.remove(jewel)
-    print("PLAY SOUND")
+    print(datetime.datetime.now())
+    
 
-def jewels_point(player,jewels,ground_grid):
+def player_jewel_collide(player,jewels,ground_grid,game_stats):
         
         for jewel in jewels.sprites():
            if not pygame.sprite.spritecollideany(jewel,ground_grid):
-               if pygame.sprite.spritecollideany(player,jewels):
-                  t = threading.Thread(target=remove_play_sound, args = (jewels,jewel))
-                  t.start()
+                collision =  pygame.sprite.spritecollideany(player,jewels)
+                if collision:
+
+                    t = threading.Thread(target=remove_play_sound, args = (jewels,jewel,game_stats))
+                    t.start()
 
 def create_jewels(screen,settings,jewels):
         jewel_list = [
@@ -109,18 +112,23 @@ def shoot(settings,screen,player,bullets):
     bullet = Bullet(settings,screen,player)
     bullets.add(bullet)
 
-def update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels,dashboard):
-    screen.fill(settings.bg_color)
-    check_ground_collition(ground_grid,player)
-    dashboard.__blit__()
-    for jewel in jewels.sprites():
-        jewel.__blit__()
+def update_items(items):
+    for item in items.sprites():
+        item.draw()
 
-    jewels_point(player,jewels,ground_grid)
+def update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels,dashboard,game_stats):
+    screen.fill(settings.bg_color)
+    dashboard.__blit__()
+
+    check_ground_collition(ground_grid,player)
+    player_jewel_collide(player,jewels,ground_grid,game_stats)
 
     for bullet in bullets.sprites():
         if bullet.shoot_top or bullet.shoot_bottom or  bullet.shoot_right or bullet.shoot_left:
             bullet.draw()
+
+    for item in jewels.sprites():
+        item.draw()
 
     for ground_cell in ground_grid.sprites():
          ground_cell.draw()

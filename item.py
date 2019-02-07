@@ -11,7 +11,7 @@ class Item(Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-    def __blit__(self):
+    def draw(self):
         self.screen.blit(self.image,self.rect)
         
         
