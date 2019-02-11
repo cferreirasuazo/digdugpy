@@ -33,13 +33,17 @@ def start_game():
     gf.create_jewels(screen,settings,jewels)
     game_stats.reset_game()
     dashboard = Dashboard(screen,settings,game_stats)
+    #game_stats.start_game()
     
     """MAIN LOOP"""    
     while True:
         
         gf.event_listener(screen,settings,player,bullets)
-        menu.draw()
-        pygame.display.flip()
+
+        if game_stats.menu_status:
+                menu.draw()
+                pygame.display.flip()
+
         if game_stats.game_status:
                         
                 player.update()

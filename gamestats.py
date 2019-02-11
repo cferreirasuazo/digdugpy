@@ -3,6 +3,7 @@ class GameStats():
         self.high_score = 0
         self.reset_game()
         self.game_status = False
+        self.menu_status = True
 
 
     def reset_game(self):
@@ -11,5 +12,8 @@ class GameStats():
     def increase_score(self):
         self.score = self.score + 100
 
+    def start_game(self):
+        self.game_status = True
+        self.menu_status = False
     
 
