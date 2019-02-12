@@ -2,6 +2,7 @@ import pygame
 import os
 import sys
 from settings import Settings
+import threading
 import game_functions as gf
 from player import Player
 from pygame.sprite import Group
@@ -9,7 +10,6 @@ from monster import Monster
 from item import Item
 from dashboard import Dashboard
 from gamestats import GameStats
-
 from start_menu import Menu
 
 def start_game():
@@ -35,15 +35,16 @@ def start_game():
     dashboard = Dashboard(screen,settings,game_stats)
     #game_stats.start_game()
     
+
+#     thread = threading.Thread(target=gf.menu_init, args=(menu,))
+#     thread.start()
+                
+
     """MAIN LOOP"""    
     while True:
-        
-        gf.event_listener(screen,settings,player,bullets)
-
-        if game_stats.menu_status:
-                menu.draw()
-                pygame.display.flip()
-
+        gf.menu_init(menu)
+        gf.event_listener(screen,settings,player,bullets,menu)
+      
         if game_stats.game_status:
                         
                 player.update()

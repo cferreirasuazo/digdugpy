@@ -38,7 +38,7 @@ def listen_press_up(event,player):
         if event.key  == pygame.K_DOWN:
             player.move_down = False
 
-def event_listener(screen,settings,player,bullets):
+def event_listener(screen,settings,player,bullets,menu):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -46,6 +46,18 @@ def event_listener(screen,settings,player,bullets):
             listen_press_up(event,player)
         if event.type == pygame.KEYDOWN:
             listen_press_down(event,screen,settings,player,bullets)
+        if event.type == pygame.MOUSEBUTTONDOWN:
+           
+            for item in menu.items.sprites():
+                print(item.title)
+
+
+
+def menu_init(menu):
+        menu.draw()
+        pygame.display.flip()
+
+
 
 def remove_jewel(jewels,jewel,game_stats,sb):
     time.sleep(0.1)

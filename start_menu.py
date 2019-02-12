@@ -9,7 +9,7 @@ class Menu():
         self.settings = settings
         self.screen = screen
         self.frame = pygame.Surface((700,500))
-        self.frame.fill((0,0,0))
+        self.frame.fill((7,5,9))
         self.rect_frame = self.frame.get_rect()
         self.rect_frame.x = int((self.settings.screen_width - self.rect_frame.width) / 2) 
         self.rect_frame.y = int((self.settings.screen_height - self.rect_frame.height) / 2) 
@@ -17,7 +17,7 @@ class Menu():
         self.items.add(Item("MINER",70,self.frame,50))
         self.items.add(Item("NEW GAME",30,self.frame,135,"new_game"))
         self.items.add(Item("High Score",30,self.frame,175,"high_score"))
-        self.items.add(Item("EXIT",30,self.frame,215,"exit"))
+        self.items.add(Item("EXIT",30,self.frame,215,""))
         self.items.add(Item("Code by Cristhian Ferreira",15,self.frame,345))
         self.items.add(Item("Created with Pygame and Love",15,self.frame,380))
        
@@ -25,6 +25,11 @@ class Menu():
         self.screen.blit(self.frame,self.rect_frame)
         for item in self.items.sprites():
             item.draw()
+
+    def check_item_clicked(self,x,y):
+       for  item in self.items.sprites():
+           if item.title_rect.collidepoint(x,y):
+               print(item.title)
 
 
 
@@ -47,6 +52,7 @@ class Item(Sprite):
 
     def prep_text(self,color = (255, 255, 255) ):
          self.title_text = self.title_font.render(self.title,True,color,(0, 0, 0))
+
 
 
 
