@@ -25,7 +25,7 @@ def listen_press_down(event,screen,settings,player,bullets):
 
         if event.key == pygame.K_SPACE:
             shoot(settings,screen,player,bullets)
-            print(player.direction)
+
 
 def listen_press_up(event,player):
         
@@ -54,10 +54,6 @@ def event_listener(screen,settings,player,bullets,menu_items,game_stats):
                     if item.task == "start":
                         game_stats.start_game()
                         
-
-                
-
-
 
 def menu_init(menu_items):
         for item in menu_items.sprites():
@@ -135,10 +131,6 @@ def shoot(settings,screen,player,bullets):
     bullet = Bullet(settings,screen,player)
     bullets.add(bullet)
 
-def update_items(items):
-    for item in items.sprites():
-        item.draw()
-
 def update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels,dashboard,game_stats,sb):
     screen.fill(settings.bg_color)
     dashboard.__blit__()
@@ -146,15 +138,20 @@ def update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels,das
     check_ground_collition(ground_grid,player)
     player_jewel_collide(player,jewels,ground_grid,game_stats,sb)
 
+    for monster in monsters.sprites():
+        monster.__blit__()
+
     for bullet in bullets.sprites():
         if bullet.shoot_top or bullet.shoot_bottom or  bullet.shoot_right or bullet.shoot_left:
             bullet.draw()
 
     for item in jewels.sprites():
-        item.draw()
+        pass
+      #  item.draw()
 
     for ground_cell in ground_grid.sprites():
-         ground_cell.draw()
+        pass
+       #  ground_cell.draw()
         
     player.__blit__()
     

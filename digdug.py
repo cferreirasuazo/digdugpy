@@ -56,10 +56,9 @@ def start_game():
         if game_stats.game_status:
                         
                 player.update()
-                #brian.move_y()
-                #brian2.move_x()
+                brian.move_y()
+                brian2.move_x()
                 gf.update_bullets(settings,screen,bullets)
-                gf.update_items(jewels)
                 gf.update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels,dashboard,game_stats,dashboard)
 
 

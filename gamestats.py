@@ -2,7 +2,7 @@ class GameStats():
     def __init__(self,settings):
         self.high_score = 0
         self.reset_game()
-        self.game_status = False
+        self.game_status = True
         self.menu_status = True
 
 
@@ -13,7 +13,7 @@ class GameStats():
         self.score = self.score + 100
 
     def start_game(self):
-        self.game_status = True
+        self.game_status = False
         
     
 
