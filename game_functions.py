@@ -38,7 +38,7 @@ def listen_press_up(event,player):
         if event.key  == pygame.K_DOWN:
             player.move_down = False
 
-def event_listener(screen,settings,player,bullets,menu):
+def event_listener(screen,settings,player,bullets,menu_items,game_stats):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -47,14 +47,21 @@ def event_listener(screen,settings,player,bullets,menu):
         if event.type == pygame.KEYDOWN:
             listen_press_down(event,screen,settings,player,bullets)
         if event.type == pygame.MOUSEBUTTONDOWN:
-           
-            for item in menu.items.sprites():
-                print(item.title)
+            x,y = pygame.mouse.get_pos()
+            for item in menu_items.sprites():
+                clicked = item.title_rect.collidepoint(x,y)
+                if clicked:
+                    if item.task == "start":
+                        game_stats.start_game()
+                        
+
+                
 
 
 
-def menu_init(menu):
-        menu.draw()
+def menu_init(menu_items):
+        for item in menu_items.sprites():
+            item.draw()
         pygame.display.flip()
 
 

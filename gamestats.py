@@ -14,6 +14,6 @@ class GameStats():
 
     def start_game(self):
         self.game_status = True
-        self.menu_status = False
+        
     
 
