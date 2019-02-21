@@ -13,7 +13,7 @@ class Monster(Sprite):
         self.rect = self.surface.get_rect()
         self.rect.x ,self.rect.y = x,y
         self.x ,self.y = (self.rect.x), (self.rect.y)
-        self.destiny_number = 100
+        self.destiny_number = 50
         self.destiny_right = self.rect.x + self.destiny_number
         self.destiny_left = self.rect.x - self.destiny_number
 
@@ -21,6 +21,7 @@ class Monster(Sprite):
         self.destiny_bottom = self.rect.y  - self.destiny_number
         self.direction_right = "right"
         self.direction_top = "top"
+        
 
 
     def move_x(self):

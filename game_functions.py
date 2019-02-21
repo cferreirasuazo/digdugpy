@@ -11,7 +11,7 @@ import datetime
 
 def listen_press_down(event,screen,settings,player,bullets):
      
-        if event.key  == pygame.K_RIGHT:
+        if event.key  == pygame.K_RIGHT :
             player.move_right = True
 
         if event.key  == pygame.K_LEFT:
@@ -39,6 +39,7 @@ def listen_press_up(event,player):
             player.move_down = False
 
 def event_listener(screen,settings,player,bullets,menu_items,game_stats):
+  
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -81,6 +82,9 @@ def player_jewel_collide(player,jewels,ground_grid,game_stats,sb):
                     t = threading.Thread(target=remove_jewel, args = (jewels,jewel,game_stats,sb))
                     t.start()
 
+def remove_cells(monsters,ground_grid):
+    pygame.sprite.groupcollide(monsters,ground_grid,False,True)
+
 def create_jewels(screen,settings,jewels):
 
         jewel_list = [
@@ -103,9 +107,18 @@ def create_ground(settings,screen,player,ground_grid):
             y = y * 20
             cell = Ground_cell(x,y,settings,screen)
             ground_grid.add(cell)
+
+    for item in ground_grid.sprites():
+        if item.rect.x == 400 and item.rect.y == 520:
+            ground_grid.remove(item)
+
+        if item.rect.x == 400 and item.rect.y == 500:
+            ground_grid.remove(item)
           
 def check_ground_collition(ground_grid,player):
-    collited = pygame.sprite.spritecollideany(player,ground_grid)     
+    collited = pygame.sprite.spritecollideany(player,ground_grid) 
+    if collited != None:
+        print(collited.rect)   
     
     if collited:
         ground_grid.remove(collited)
@@ -133,25 +146,25 @@ def shoot(settings,screen,player,bullets):
 
 def update_screen(settings,screen,player,bullets,ground_grid,monsters,jewels,dashboard,game_stats,sb):
     screen.fill(settings.bg_color)
+
     dashboard.__blit__()
 
     check_ground_collition(ground_grid,player)
     player_jewel_collide(player,jewels,ground_grid,game_stats,sb)
-
-    for monster in monsters.sprites():
-        monster.__blit__()
+    remove_cells(monsters,ground_grid)
 
     for bullet in bullets.sprites():
         if bullet.shoot_top or bullet.shoot_bottom or  bullet.shoot_right or bullet.shoot_left:
             bullet.draw()
 
     for item in jewels.sprites():
-        pass
-      #  item.draw()
+      item.draw()
 
-    for ground_cell in ground_grid.sprites():
-        pass
-       #  ground_cell.draw()
+    for ground_cell in ground_grid.sprites():  
+        ground_cell.draw()
+
+    for monster in monsters.sprites():
+        monster.__blit__()
         
     player.__blit__()
     
