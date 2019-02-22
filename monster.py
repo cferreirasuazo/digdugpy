@@ -25,8 +25,7 @@ class Monster(Sprite):
 
 
     def move_x(self):
-        print("MOVING MONSTER X")
-
+        
         if self.direction_right == "right":
             if self.rect.x < self.destiny_right:
                 self.x = self.x + 1
@@ -43,7 +42,7 @@ class Monster(Sprite):
      
 
     def move_y(self):
-        print("MOVING MONSTER Y")
+     
 
         if self.direction_top == "top":
             if self.rect.y < self.destiny_top:

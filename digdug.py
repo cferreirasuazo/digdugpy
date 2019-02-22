@@ -50,9 +50,10 @@ def start_game():
 
     """MAIN LOOP"""    
     while True:
-
+        
         if not game_stats.game_status :
            gf.menu_init(menu_items)
+
         gf.event_listener(screen,settings,player,bullets,menu_items,game_stats)
       
         if game_stats.game_status:
