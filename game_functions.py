@@ -117,9 +117,6 @@ def create_ground(settings,screen,player,ground_grid):
           
 def check_ground_collition(ground_grid,player):
     collited = pygame.sprite.spritecollideany(player,ground_grid) 
-    if collited != None:
-        print(collited.rect)   
-    
     if collited:
         ground_grid.remove(collited)
         
