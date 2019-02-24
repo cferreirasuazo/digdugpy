@@ -11,42 +11,20 @@ import datetime
 
 def listen_press_down(event,screen,settings,player,bullets):
      
-        if event.key  == pygame.K_RIGHT :
-            player.move_right = True
-
-        if event.key  == pygame.K_LEFT:
-            player.move_left = True
-
-        if event.key  == pygame.K_UP:
-            player.move_up = True
-        
-        if event.key  == pygame.K_DOWN:
-            player.move_down = True
-
-        if event.key == pygame.K_SPACE:
-            shoot(settings,screen,player,bullets)
+  pass
 
 
 def listen_press_up(event,player):
         
-        if event.key  == pygame.K_RIGHT:
-            player.move_right = False
-        if event.key  == pygame.K_LEFT:
-            player.move_left = False
-        if event.key  == pygame.K_UP:
-            player.move_up = False        
-        if event.key  == pygame.K_DOWN:
-            player.move_down = False
+        pass
 
-def event_listener(screen,settings,player,bullets,menu_items,game_stats):
-  
+def event_listener(screen,settings,player,bullets,menu_items,game_stats,key_pressed):
+    
     for event in pygame.event.get():
+        arr  pygame.key.get_pressed()
         if event.type == pygame.QUIT:
             sys.exit()
-        if event.type == pygame.KEYUP:
-            listen_press_up(event,player)
-        if event.type == pygame.KEYDOWN:
-            listen_press_down(event,screen,settings,player,bullets)
+
         if event.type == pygame.MOUSEBUTTONDOWN:
             x,y = pygame.mouse.get_pos()
             for item in menu_items.sprites():
@@ -54,14 +32,39 @@ def event_listener(screen,settings,player,bullets,menu_items,game_stats):
                 if clicked:
                     if item.task == "start":
                         game_stats.start_game()
-                        
+    
+        if event.type == pygame.KEYUP:
+            if event.key  == pygame.K_RIGHT:
+                player.move_right = False
+            if event.key  == pygame.K_LEFT:
+                player.move_left = False
+            if event.key  == pygame.K_UP:
+                player.move_up = False        
+            if event.key  == pygame.K_DOWN:
+                player.move_down = False
+
+        elif event.type == pygame.KEYDOWN:
+
+            if event.key  == pygame.K_RIGHT:
+
+                player.move_right = True
+
+            elif event.key  == pygame.K_LEFT:
+                player.move_left = True
+
+            elif event.key  == pygame.K_UP:
+                player.move_up = True
+            
+            elif event.key  == pygame.K_DOWN:
+                player.move_down = True
+
+            elif event.key == pygame.K_SPACE:
+                shoot(settings,screen,player,bullets)
 
 def menu_init(menu_items):
         for item in menu_items.sprites():
             item.draw()
         pygame.display.flip()
-
-
 
 def remove_jewel(jewels,jewel,game_stats,sb):
     time.sleep(0.1)
