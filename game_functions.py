@@ -21,7 +21,7 @@ def listen_press_up(event,player):
 def event_listener(screen,settings,player,bullets,menu_items,game_stats,key_pressed):
     
     for event in pygame.event.get():
-        arr  pygame.key.get_pressed()
+
         if event.type == pygame.QUIT:
             sys.exit()
 
