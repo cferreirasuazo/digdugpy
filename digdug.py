@@ -45,7 +45,7 @@ def start_game():
     gf.create_jewels(screen,settings,jewels)
     game_stats.reset_game()
     dashboard = Dashboard(screen,settings,game_stats)
-
+    key_pressed = ""
                 
 
     """MAIN LOOP"""    
@@ -54,7 +54,7 @@ def start_game():
         if not game_stats.game_status :
            gf.menu_init(menu_items)
 
-        gf.event_listener(screen,settings,player,bullets,menu_items,game_stats)
+        gf.event_listener(screen,settings,player,bullets,menu_items,game_stats,key_pressed)
       
         if game_stats.game_status:
                         
