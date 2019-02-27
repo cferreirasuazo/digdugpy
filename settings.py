@@ -14,6 +14,7 @@ class Settings():
 
         #Player Settings
         self.player_measure = 23.3
+
         self.player_speed_factor = 1.2345
         self.player_height = self.player_measure
         self.player_width = self.player_measure

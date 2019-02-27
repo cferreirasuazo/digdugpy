@@ -38,7 +38,6 @@ def listen_press_down(event,screen,settings,player,bullets):
         if event.key == pygame.K_SPACE:
             shoot(settings,screen,player,bullets)
 
-
 def listen_press_up(event,player):        
             
         if event.type == pygame.KEYUP:
@@ -51,8 +50,8 @@ def listen_press_up(event,player):
             if event.key  == pygame.K_DOWN:
                 player.move_down = False
 
-
 def event_listener(screen,settings,player,bullets,menu_items,game_stats):
+
     
     for event in pygame.event.get():
 
