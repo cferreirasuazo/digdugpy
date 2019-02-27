@@ -13,16 +13,28 @@ def listen_press_down(event,screen,settings,player,bullets):
      
         if event.key  == pygame.K_RIGHT :
             player.move_right = True
+            player.move_left = False
+            player.move_up = False
+            player.move_down = False
 
         if event.key  == pygame.K_LEFT:
             player.move_left = True
+            player.move_right = False
+            player.move_up = False
+            player.move_down = False
 
         if event.key  == pygame.K_UP:
             player.move_up = True
+            player.move_left = False
+            player.move_right = False
+            player.move_down = False
         
         if event.key  == pygame.K_DOWN:
             player.move_down = True
-
+            player.move_up = False
+            player.move_left = False
+            player.move_right = False
+        
         if event.key == pygame.K_SPACE:
             shoot(settings,screen,player,bullets)
 
